@@ -1,8 +1,9 @@
-[setup]
+[phases.setup]
 nixPkgs = ["maven", "jdk17"]
 
-[build]
+[phases.build]
 cmds = ["mvn clean package -DskipTests"]
 
 [start]
 cmd = "java -jar target/cloud-vendor-rest-api-0.0.1-SNAPSHOT.jar"
+
