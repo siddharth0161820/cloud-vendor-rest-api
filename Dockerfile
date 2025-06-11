@@ -1,19 +1,21 @@
-# Step 1: Build the application
-FROM maven:3.8.5-openjdk-17 AS builder
+# Stage 1: Build the application using Java 21
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
-# Copy only the Security module (where pom.xml is located)
-COPY Security /app
+# Copy the Security module into the container
+COPY . .
 
+# Build the Spring Boot app
 RUN mvn clean package -DskipTests
 
-# Step 2: Run the application
-FROM openjdk:17-jdk-slim
+# Stage 2: Run the application
+FROM eclipse-temurin:21-jdk-jammy
 
 WORKDIR /app
 
-# Copy the built jar from the previous stage
-COPY --from=builder /app/target/cloudvendor-0.0.1-SNAPSHOT.jar app.jar
+# Copy the built jar from the builder stage
+COPY --from=builder /app/target/*.jar app.jar
 
+# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
