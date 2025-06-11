@@ -1,6 +1,6 @@
-# 🚀 Cloud Vendor Management API – Spring Boot  (Secure, Layered Architecture)
+# 🚀 Cloud Vendor Management API – Spring Boot 
 
-This is a production-grade Java backend project designed with a clean and secure layered architecture using Spring Boot. The API allows CRUD operations on cloud vendor entities, backed with validation, exception handling, and tested thoroughly via Postman.
+A production-style secure Java backend built using Spring Boot. This project manages cloud vendors with proper layered architecture, validation, exception handling, and all APIs tested using Postman.
 
 ---
 
@@ -8,14 +8,14 @@ This is a production-grade Java backend project designed with a clean and secure
 
 ```
 Security/
-├── ControllerLayer/           → REST endpoints
-├── ServiceLayer/              → Business logic
-├── RepositoryLayer/           → JPA Repository
-├── Entity/                    → CloudVendor entity
-├── UserDTO/                   → DTO for validation
-├── GlobalExceptionHandling/   → Global exception advice
-├── CustomException/           → Custom response wrapper
-└── SecurityApplication.java   → Main entry point
+├── ControllerLayer/
+├── ServiceLayer/
+├── RepositoryLayer/
+├── Entity/
+├── UserDTO/
+├── CustomException/
+├── GlobalExceptionHandling/
+└── SecurityApplication.java
 ```
 
 ---
@@ -27,14 +27,13 @@ Security/
 - Spring Web
 - Spring Data JPA
 - Hibernate
-- Jakarta Bean Validation (for `@Valid`)
+- Jakarta Bean Validation
 - MySQL / H2
-- Postman for API testing
-- GitHub for version control
+- Postman (API Testing)
 
 ---
 
-## 🧪 API Base URL
+## 🧪 Base URL
 
 ```
 http://localhost:6363
@@ -42,22 +41,20 @@ http://localhost:6363
 
 ---
 
-## 📬 API Endpoints (with Postman Results)
+## 📬 API Endpoints
 
 ### ✅ 1. Get All Vendors
-- **Method**: `GET`
-- **URL**: `/getAllVendors`
-- **Description**: Retrieves all cloud vendors.
+- **GET** `/getAllVendors`  
+Returns all vendor entries from the database.
 
 ---
 
 ### ✅ 2. Get Vendor by ID
 
-- **Method**: `GET`
-- **URL**: `/getSingleVendor/{id}`
-- **Example**: `/getSingleVendor/1`
+- **GET** `/getSingleVendor/{id}`  
+Example: `/getSingleVendor/1`
 
-#### 🔵 Success Response (200 OK)
+#### ✅ Success Response
 ```json
 {
   "HttpStatus ": "OK",
@@ -71,12 +68,12 @@ http://localhost:6363
 }
 ```
 
-🖼️ Screenshot:
-![Success - Get Vendor](https://github.com/siddharth0161820/cloud-vendor-rest-api/assets/your-success-screenshot)
+🖼️ Screenshot:  
+![Success Screenshot](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/Screenshot%20(134).png?raw=true)
 
 ---
 
-#### 🔴 Error Response (404 NOT_FOUND)
+#### ❌ Not Found Error Response
 ```json
 {
   "message": "Please enter the valid id to extract single vendor details",
@@ -85,16 +82,14 @@ http://localhost:6363
 }
 ```
 
-🖼️ Screenshot:
-![Error - Invalid Vendor](https://github.com/siddharth0161820/cloud-vendor-rest-api/assets/your-error-screenshot)
+🖼️ Screenshot:  
+![Error Screenshot](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/Screenshot%20(135).png?raw=true)
 
 ---
 
 ### ✅ 3. Add New Vendor
 
-- **Method**: `POST`
-- **URL**: `/addVendor`
-- **Request Body**:
+- **POST** `/addVendor`
 ```json
 {
   "name": "AWS",
@@ -103,7 +98,7 @@ http://localhost:6363
 }
 ```
 
-#### ✅ Response (201 Created)
+#### Response
 ```json
 {
   "Message ": "CloudVendor Created",
@@ -121,29 +116,13 @@ http://localhost:6363
 
 ### ✅ 4. Update Vendor
 
-- **Method**: `PUT`
-- **URL**: `/updateVendor`
-- **Request Body**:
+- **PUT** `/updateVendor`
 ```json
 {
   "id": 1,
   "name": "Amazon Web Services",
   "email": "aws@cloud.com",
-  "password": "newSecurePass"
-}
-```
-
-#### ✅ Response
-```json
-{
-  "Message ": "CloudVendor Updated",
-  "HttpStatus ": "OK",
-  "Data ": {
-    "id": 1,
-    "name": "Amazon Web Services",
-    "email": "aws@cloud.com",
-    "password": "newSecurePass"
-  }
+  "password": "newpass123"
 }
 ```
 
@@ -151,24 +130,12 @@ http://localhost:6363
 
 ### ✅ 5. Delete Vendor
 
-- **Method**: `DELETE`
-- **URL**: `/deleteVendor/{id}`
-- **Example**: `/deleteVendor/2`
-
-#### ✅ Response
-```json
-{
-  "Message ": "DELETED SUCCESSFULLY",
-  "HttpStatus ": "OK",
-  "Data ": null
-}
-```
+- **DELETE** `/deleteVendor/{id}`  
+Example: `/deleteVendor/1`
 
 ---
 
-## ⚠️ Validation Errors
-
-If any field fails validation (like empty `email`), a structured 400 BAD_REQUEST is returned:
+## ⚠️ Validation Error Example
 
 ```json
 {
@@ -179,35 +146,41 @@ If any field fails validation (like empty `email`), a structured 400 BAD_REQUEST
 
 ---
 
-## 🚀 How to Run Locally
+## ▶️ How to Run Locally
 
 ```bash
-# Clone the project
+# Clone the repo
 git clone https://github.com/siddharth0161820/cloud-vendor-rest-api.git
 
-# Navigate into project
+# Navigate to Security folder
 cd cloud-vendor-rest-api/Security
 
-# Open in IntelliJ or VS Code
+# Open SecurityApplication.java in IntelliJ or VSCode
 
-# Run the main class
-SecurityApplication.java
+# Run the Spring Boot application
 ```
 
-Access the APIs using Postman at:  
+Access APIs via Postman at:  
 `http://localhost:6363`
 
 ---
 
 ## 📷 Screenshots from Postman
 
-### ✅ Success – Get Vendor ID 1  
-![Success - Get Vendor](https://github.com/siddharth0161820/cloud-vendor-rest-api/assets/your-success-screenshot)
+### ✅ Workspace View  
+![Workspace Screenshot](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/Screenshot%20(133).png?raw=true)
 
-### ❌ Error – Get Invalid Vendor ID 11  
-![Error - Get Invalid Vendor](https://github.com/siddharth0161820/cloud-vendor-rest-api/assets/your-error-screenshot)
+### ✅ Get Vendor (Success)  
+![Success Screenshot](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/Screenshot%20(134).png?raw=true)
 
-Replace the links above with the GitHub-hosted versions of your screenshots (or upload them to GitHub issues or Imgur if needed).
+### ❌ Get Vendor (404 Error)  
+![Error Screenshot](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/Screenshot%20(135).png?raw=true)
+
+---
+
+## 🔗 Postman Collection
+
+If you want, [click here to test all APIs in Postman](#) *(Replace this with your public Postman link if available)*
 
 ---
 
@@ -215,9 +188,7 @@ Replace the links above with the GitHub-hosted versions of your screenshots (or 
 
 **Siddharth Kumar**  
 📧 siddharth0161820@gmail.com  
-🔗 GitHub: [siddharth0161820](https://github.com/siddharth0161820)  
+🔗 GitHub: [@siddharth0161820](https://github.com/siddharth0161820)  
 🔗 LinkedIn: [linkedin.com/in/siddharth0161820](https://linkedin.com/in/siddharth0161820)
-
-
 
 
