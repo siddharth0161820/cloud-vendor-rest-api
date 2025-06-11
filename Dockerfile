@@ -1,12 +1,13 @@
+
 # Stage 1: Build the application using Java 21
 FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
-# Copy the Security module into the container
-COPY . .
+# Copy only the Security module (which contains pom.xml and source code)
+COPY Security /app
 
-# Build the Spring Boot app
+# Run the build inside the Security module
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
