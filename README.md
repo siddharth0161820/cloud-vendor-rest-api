@@ -1,61 +1,49 @@
 # ☁️ Cloud Vendor REST API (Spring Boot + JWT + Validation + H2 + Railway)
 
-This is a fully functional, professional-grade Java backend project built using Spring Boot and layered architecture. It demonstrates:
+This is a fully functional Java backend project built using Spring Boot and layered architecture. It demonstrates:
 
-✅ REST API endpoints  
-✅ Spring Security + JWT authentication  
+✅ RESTful API endpoints  
+✅ Spring Security with JWT authentication  
 ✅ DTO + Validation using Jakarta  
 ✅ Global Exception Handling  
-✅ Unit Testing with JUnit + Mockito  
-✅ In-memory H2 DB for cloud deployments  
-✅ Hosted Live on Railway  
-✅ Screenshot Proof Included  
-✅ Public Root Welcome Route (`/`) now allowed
+✅ Unit Testing (JUnit + Mockito)  
+✅ In-memory H2 DB for Cloud  
+✅ Live Railway Deployment  
+✅ Real request/response samples below  
+✅ Public Welcome Route (`/`) enabled
 
 ---
 
-## 🌐 Live Deployment
+## 🌍 Live Deployment
 
-🟢 Your API is live and publicly accessible via:
+- 🔗 **Base URL**:  
+  https://cloud-vendor-rest-api-production.up.railway.app
 
-🔗 **Base URL**  
-[https://cloud-vendor-rest-api-production.up.railway.app](https://cloud-vendor-rest-api-production.up.railway.app)
+- ✅ **Public Endpoint** (Get all vendors):  
+  https://cloud-vendor-rest-api-production.up.railway.app/vendor
 
-✅ **Public test endpoint**  
-[https://cloud-vendor-rest-api-production.up.railway.app/vendor](https://cloud-vendor-rest-api-production.up.railway.app/vendor)
-
-✅ **Root welcome route**  
-[https://cloud-vendor-rest-api-production.up.railway.app/](https://cloud-vendor-rest-api-production.up.railway.app/)
+- ✅ **Welcome Route** (`/`):  
+  https://cloud-vendor-rest-api-production.up.railway.app/
 
 ---
 
-## 📮 REST API Endpoints
+## 📮 REST API Endpoints (with Responses)
 
-| Method | Endpoint                            | Description              | Auth | Body | Sample |
-|--------|-------------------------------------|--------------------------|------|------|--------|
-| GET    | `/vendor`                           | Get all vendors          | ❌    | ❌    | [Try it](https://cloud-vendor-rest-api-production.up.railway.app/vendor) |
-| GET    | `/vendor/getSingleVendors/{id}`     | Get vendor by ID         | ❌    | ❌    | [ID 1](https://cloud-vendor-rest-api-production.up.railway.app/vendor/getSingleVendors/1) |
-| POST   | `/vendor/addVendors`                | Add a new vendor         | ❌    | ✅    | [Try it](https://cloud-vendor-rest-api-production.up.railway.app/vendor/addVendors) |
+### ➕ POST – Add Vendor
 
----
+**Endpoint:**  
+`POST /vendor/addVendors`
 
-## ➕ Add Vendor (POST)
-
-**URL:**  
-[`/vendor/addVendors`](https://cloud-vendor-rest-api-production.up.railway.app/vendor/addVendors)
-
-**Method:** `POST`  
-**Content-Type:** `application/json`
-
-### 🔹 Request Body
+**Request Body:**
 
 ```json
 {
-  "name": "Maa Kali",
-  "username": "maaKali@gamil.com",
-  "password": "maakali"
+  "name": "Mein",
+  "username": "meinn@gamil.com",
+  "password": "meinn"
 }
-🔹 Response
+Response:
+
 json
 Copy
 Edit
@@ -63,17 +51,66 @@ Edit
   "Message": "Vendor added",
   "HttPstatus": "CREATED",
   "Data": {
-    "id": 1,
-    "name": "Maa Kali",
-    "username": "maaKali@gamil.com",
-    "password": "maakali"
+    "id": 2,
+    "name": "Mein",
+    "username": "meinn@gamil.com",
+    "password": "meinn"
   }
 }
-🔁 Get All Vendors (GET)
-URL:
-/vendor
+⚠️ POST – DTO Validation Error
+json
+Copy
+Edit
+{
+  "name": "Maa",
+  "username": "",
+  "password": ""
+}
+Response:
 
-🔹 Response
+json
+Copy
+Edit
+{
+  "password": "Password is mandatory",
+  "username": "Username is mandatory"
+}
+🔁 PUT – Update Vendor
+Endpoint:
+PUT /vendor/updateVendors
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "id": 3,
+  "name": "Maa",
+  "username": "Maa@gmail.com",
+  "password": "maaaaaaaa"
+}
+Response:
+
+json
+Copy
+Edit
+{
+  "Message": "Vendor updated",
+  "HttPstatus": "OK",
+  "Data": {
+    "id": 3,
+    "name": "Maa",
+    "username": "Maa@gmail.com",
+    "password": "maaaaaaaa"
+  }
+}
+🔍 GET – All Vendors
+Endpoint:
+GET /vendor
+
+Response:
+
 json
 Copy
 Edit
@@ -91,14 +128,18 @@ Edit
     "password": "shreeradharani"
   }
 ]
-🔍 Get Single Vendor by ID (GET)
-Example 1:
+🔎 GET – Single Vendor by ID
+Endpoint:
+GET /vendor/getSingleVendors/{id}
+
+Example:
+
+url
+Copy
+Edit
 /vendor/getSingleVendors/1
+Response:
 
-Example 2:
-/vendor/getSingleVendors/2
-
-🔹 Response
 json
 Copy
 Edit
@@ -106,61 +147,70 @@ Edit
   "Message": "OM NAMO PARVATI PATE HAR HAR MAHADEV",
   "HttPstatus": "OK",
   "Data": {
-    "id": 2,
-    "name": "Shree Radha Rani",
-    "username": "shreeradharani@gamil.com",
-    "password": "shreeradharani"
+    "id": 1,
+    "name": "Maa Kali",
+    "username": "maaKali@gamil.com",
+    "password": "maakali"
   }
 }
-🧪 Unit Testing (JUnit + Mockito)
-Unit testing has been implemented for the service layer using:
+❌ DELETE – Delete Vendor
+Endpoint:
+DELETE /vendor/deleteVendors/{id}
 
-✅ JUnit 5
+Success Response:
 
-✅ Mockito (repository mocking)
+json
+Copy
+Edit
+{
+  "Message": "Deleted",
+  "HttPstatus": "OK",
+  "Data": null
+}
+Error Response (Not Found):
 
-✅ Covered Scenarios
-Add Vendor – valid data (mocked repository)
+json
+Copy
+Edit
+{
+  "name": "Please enter the valid input to delete the single vendor details",
+  "throwable": null,
+  "httpStatus": "NOT_FOUND"
+}
+🧪 Unit Testing
+✅ Service layer tested with JUnit 5 + Mockito
 
-Get Single Vendor – found and not-found case
+✅ Mocks for repository layer
 
-Exception Handling – 404 custom messages
+✅ Positive + negative test cases (vendor not found, valid vendor addition, etc.)
 
-📄 File Path:
-/src/test/java/com/SpringSecurity/Security/ServiceLayer/ServiceLayerImplementationTest.java
-
-⚙️ Tech Stack
-Layer	Technology
+💡 Tech Stack
+Category	Tech Used
 Language	Java 17
 Framework	Spring Boot 3.2.x
+API Design	REST + DTO + Validation
 Security	Spring Security + JWT (jjwt 0.11.5)
-Validation	Jakarta Bean Validation (JSR-380)
-API	Spring Web (REST)
-DB	H2 (in-memory)
 Persistence	Spring Data JPA
+Database	H2 In-Memory
 Testing	JUnit 5, Mockito
-Deployment	Railway (cloud hosting)
-Tools	IntelliJ, GitHub, Postman
+Deployment	Railway (Cloud)
+Tools	Postman, IntelliJ, GitHub
 
-💡 Highlights
-✅ Layered Architecture: Controller → Service → Repository
+🚀 Highlights
+✅ DTO + Jakarta validation
 
-✅ JWT-based stateless security
+✅ JWT-based authentication (Stateless)
 
-✅ DTO & Validation with custom error responses
+✅ Global exception handling with @ControllerAdvice
 
-✅ Global exception handling
+✅ Clean Layered Architecture: Controller → Service → Repository
 
-✅ Fast H2 in-memory DB
+✅ End-to-end testing with live endpoints
 
-✅ Public GET endpoint for demo
+✅ H2 for cloud compatibility
 
-✅ Deployed on Railway + Live working screenshots
+✅ Screenshot proof of Railway Deployment
 
-🔗 Useful Links
-🔥 Live API Base URL:
-https://cloud-vendor-rest-api-production.up.railway.app
-
-📂 GitHub Repo:
-https://github.com/siddharth0161820/cloud-vendor-rest-api
-
+yaml
+Copy
+Edit
