@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/vendor")
 public class ControllerLayer {
 
     //0>Connect Controller Layer to Service Layer
@@ -21,7 +22,7 @@ public class ControllerLayer {
 
     //1>Methods()
       //1.0>getAllVendors
-    @GetMapping("/getAllVendors")
+    @GetMapping
     public List<CloudVendor>getAllVendors(){
         return this.serviceLayer.getAllVendors();
     }
