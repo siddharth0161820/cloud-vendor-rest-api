@@ -1,11 +1,12 @@
 package com.SpringSecurity.Security.ServiceLayer;
 
-
+import com.SpringSecurity.Security.CustomException.TestCustomExeption;
 import com.SpringSecurity.Security.Entity.CloudVendor;
 import com.SpringSecurity.Security.GlobalExceptionHandling.NOTFOUNDEXCEPTION;
 import com.SpringSecurity.Security.RepositoryLayer.RepositoryLayer;
 import com.SpringSecurity.Security.UserDTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,53 +14,53 @@ import java.util.List;
 @Service
 public class ServiceLayerImplementation implements ServiceLayer {
 
-    //0>Connect Service Layer to Repository Layer
+    //Connect serviceLayer to RepositoryLayer
     @Autowired
     private RepositoryLayer repositoryLayer;
 
-    @Override
+    @Override   //0>getAllVendors
     public List<CloudVendor> getAllVendors() {
         return repositoryLayer.findAll();
     }
 
-    @Override
-    public CloudVendor getSingleVendors(int id) {
-        if ( repositoryLayer.findById(id).isEmpty()){
-         throw new NOTFOUNDEXCEPTION("Please enter the valid input to get the single vendor details");
+    @Override   //1>getSingleVendor
+    public CloudVendor getSingleVendor(int id) {
+        if (repositoryLayer.findById(id).isEmpty()){
+            throw new NOTFOUNDEXCEPTION("Please enter the valid id to extract single vendor details");
         }
-        return repositoryLayer.findById(id).get();
+       return repositoryLayer.findById(id).get();
+
     }
 
-    @Override
-    public CloudVendor addVendors(UserDTO userDTO) {
+    @Override     //2>addVendors
+    public CloudVendor addVendor(UserDTO userDTO) {
         CloudVendor cloudVendor=new CloudVendor();
         cloudVendor.setId(userDTO.getId());
         cloudVendor.setName(userDTO.getName());
-        cloudVendor.setUsername(userDTO.getUsername());
         cloudVendor.setPassword(userDTO.getPassword());
+        cloudVendor.setEmail(userDTO.getEmail());
         repositoryLayer.save(cloudVendor);
         return cloudVendor;
     }
 
     @Override
-    public void deleteVendors(int id) {
-        if ( repositoryLayer.findById(id).isEmpty()){
-            throw new NOTFOUNDEXCEPTION("Please enter the valid input to delete the single vendor details");
+    public void deleteVendor(int id) {
+        if (repositoryLayer.findById(id).isEmpty()){
+            throw new NOTFOUNDEXCEPTION("Please enter the valid id to delete the vendor details");
         }
-     repositoryLayer.deleteById(id);
+        repositoryLayer.deleteById(id);
     }
 
     @Override
-    public CloudVendor updateVendors(UserDTO userDTO) {
-        //Check if the vendors to be updated in th userDto exists in the database to avoid errors
-        CloudVendor existingVendor=repositoryLayer.findById(userDTO.getId()).
-                orElseThrow(()->new NOTFOUNDEXCEPTION("Vendor not found by Id"+userDTO.getId()));
-        //update vendor in UserDTO
+    public CloudVendor updateVendor(UserDTO userDTO) {
+        //check if data exist in the DB
+        CloudVendor existingVendor=repositoryLayer.findById(userDTO.getId())
+                        .orElseThrow(()->new NOTFOUNDEXCEPTION("CloudVendor not found by id"+userDTO.getId()));
+
         existingVendor.setId(userDTO.getId());
         existingVendor.setName(userDTO.getName());
-        existingVendor.setUsername(userDTO.getUsername());
         existingVendor.setPassword(userDTO.getPassword());
-        //Save the data
+        existingVendor.setEmail(userDTO.getEmail());
         repositoryLayer.save(existingVendor);
         return existingVendor;
     }

@@ -1,34 +1,35 @@
 package com.SpringSecurity.Security.UserDTO;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class UserDTO {
+     @NotNull(message = "Id should be primary key")
     private int id;
-    @NotEmpty
-    @Size(min = 2,message = "Please enter at-least 2 characters for the name")
+     @NotBlank
+     @Size(min = 3,message = "Name should have at-least  3 characters")
     private String name;
-    @NotEmpty(message = "Username is mandatory")
-    private String username;
-    @NotNull
-    @Size(min = 4,message = "Password is mandatory")
+     @Email(message = "Please,provide the valid mail id")
+    private String email;
+     @NotNull
+     @Size(min = 4,message = "Password should be strong")
     private String password;
 
     //1>Default Constructor
     public UserDTO() {
     }
 
-    //2>Parameterized Constructor
-
-    public UserDTO(int id, String name, String username, String password) {
+    //2>Parameterized constructor
+    public UserDTO(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
-    //3> Getter & Setter
+    //3>Getter & Setter
 
     public int getId() {
         return id;
@@ -46,12 +47,12 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -62,14 +63,14 @@ public class UserDTO {
         this.password = password;
     }
 
-    //5>toString()
+    //4>toString()
 
     @Override
     public String toString() {
         return "CloudVendor{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

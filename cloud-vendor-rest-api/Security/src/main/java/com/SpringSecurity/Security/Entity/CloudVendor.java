@@ -3,30 +3,29 @@ package com.SpringSecurity.Security.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cloud_vendor_info")
+@Table(name="CloudVendorDetails")
 public class CloudVendor {
     //0>Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private String username;
+    private String email;
     private String password;
 
     //1>Default Constructor
     public CloudVendor() {
     }
 
-    //2>Parameterized Constructor
-
-    public CloudVendor(int id, String name, String username, String password) {
+    //2>Parameterized constructor
+    public CloudVendor(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
-    //3> Getter & Setter
+    //3>Getter & Setter
 
     public int getId() {
         return id;
@@ -44,12 +43,12 @@ public class CloudVendor {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -60,14 +59,14 @@ public class CloudVendor {
         this.password = password;
     }
 
-    //5>toString()
+    //4>toString()
 
     @Override
     public String toString() {
         return "CloudVendor{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

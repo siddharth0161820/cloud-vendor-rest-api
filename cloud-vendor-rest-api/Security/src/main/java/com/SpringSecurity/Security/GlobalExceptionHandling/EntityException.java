@@ -4,22 +4,22 @@ import org.springframework.http.HttpStatus;
 
 public class EntityException {
     //0>Attributes
-    private final String name;
+    private final String message;
     private final Throwable throwable;
     private final HttpStatus httpStatus;
 
     //1>constructor
 
-    public EntityException(String name, Throwable throwable, HttpStatus httpStatus) {
-        this.name = name;
+    public EntityException(String message, Throwable throwable, HttpStatus httpStatus) {
+        this.message = message;
         this.throwable = throwable;
         this.httpStatus = httpStatus;
     }
 
     //2>Getter
 
-    public String getName() {
-        return name;
+    public String getMessage() {
+        return message;
     }
 
     public Throwable getThrowable() {

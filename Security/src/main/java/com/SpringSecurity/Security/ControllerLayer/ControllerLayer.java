@@ -1,6 +1,6 @@
 package com.SpringSecurity.Security.ControllerLayer;
 
-import com.SpringSecurity.Security.CustomException.TestCustomExeption;
+import com.SpringSecurity.Security.CutomException.TestCustomException;
 import com.SpringSecurity.Security.Entity.CloudVendor;
 import com.SpringSecurity.Security.ServiceLayer.ServiceLayer;
 import com.SpringSecurity.Security.UserDTO.UserDTO;
@@ -14,51 +14,55 @@ import java.util.List;
 
 @RestController
 public class ControllerLayer {
-    //Connect serviceLayer to Controller Layer
-      @Autowired
+
+    //0>Connect Controller Layer to Service Layer
+    @Autowired
     private ServiceLayer serviceLayer;
 
-      //DIFFERENT METHODS()
-
-    //1>getAllVendors
+    //1>Methods()
+      //1.0>getAllVendors
     @GetMapping("/getAllVendors")
     public List<CloudVendor>getAllVendors(){
-        return serviceLayer.getAllVendors();
+        return this.serviceLayer.getAllVendors();
     }
 
-    //2>getSingleVendor
-    @GetMapping("/getSingleVendor/{id}")
-    public ResponseEntity<Object> getSingleVendor(@PathVariable int id){
-
-       return TestCustomExeption.response(
-                "HAR HAR MAHADEV",
+    //1.1>getSingleVendors
+    @GetMapping("/getSingleVendors/{id}")
+    public ResponseEntity<Object> getSingleVendors(@PathVariable int id) {
+        return TestCustomException.response(
+                "OM NAMO PARVATI PATE HAR HAR MAHADEV",
                 HttpStatus.OK,
-                serviceLayer.getSingleVendor(id)
+                this.serviceLayer.getSingleVendors(id)
         );
+
+    }
+    //1.2>addVendors
+    @PostMapping("/addVendors")
+    public ResponseEntity<Object> addVendors(@Valid @RequestBody UserDTO userDTO){
+        CloudVendor addVendor=this.serviceLayer.addVendors(userDTO);
+        return TestCustomException.response("Vendor added",HttpStatus.CREATED,addVendor);
+
+
     }
 
-    //3>addVendor
-    @PostMapping("/addVendor")
-    public ResponseEntity<Object> addVendor(@Valid  @RequestBody UserDTO userDTO){
-        CloudVendor addVendor=serviceLayer.addVendor(userDTO);
-       return TestCustomExeption.response("CloudVendor Created",HttpStatus.CREATED,addVendor);
-    }
-
-    //4>deleteVendor
-    @DeleteMapping("/deleteVendor/{id}")
-    public ResponseEntity<Object> deleteVendor(@PathVariable int id){
-        serviceLayer.deleteVendor(id);
-        return TestCustomExeption.response(
-                "DELETED SUCCESSFULLY",
+    //1.3>deleteVendors
+    @DeleteMapping("/deleteVendors/{id}")
+    public ResponseEntity<Object> deleteVendors(@PathVariable int id){
+        this.serviceLayer.deleteVendors(id);
+        return TestCustomException.response(
+                "Deleted",
                 HttpStatus.OK,
                 null
         );
+
     }
-    //5>updateVendor
-    @PutMapping("/updateVendor")
-    public ResponseEntity<Object> updateVendor(@Valid @RequestBody UserDTO userDTO){
-        CloudVendor exisitingVendor= serviceLayer.updateVendor(userDTO);
-        return TestCustomExeption.response("CloudVendor Updated",HttpStatus.OK,exisitingVendor);
+
+    //1.4>updateVendors
+    @PutMapping("/updateVendors")
+    public ResponseEntity<Object> updateVendors(@Valid @RequestBody UserDTO userDTO){
+        CloudVendor updateVendor= this.serviceLayer.updateVendors(userDTO);
+
+        return TestCustomException.response("Vendor updated",HttpStatus.OK,updateVendor);
     }
 
 }
