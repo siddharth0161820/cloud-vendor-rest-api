@@ -48,8 +48,8 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/auth/register").permitAll()
-                        .requestMatchers("/vendor/**").permitAll() //  Allow vendor endpoints for deployment over railway
+                       // .requestMatchers("/auth/login", "/auth/register").permitAll()
+                        .requestMatchers("/", "/auth/login", "/auth/register", "/vendor/**").permitAll() //  Allow vendor endpoints for deployment over railway
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

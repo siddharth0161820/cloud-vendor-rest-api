@@ -22,6 +22,7 @@ public class ControllerLayer {
 
     //1>Methods()
       //1.0>getAllVendors
+    //removed endpoint so can be accessed publically
     @GetMapping
     public List<CloudVendor>getAllVendors(){
         return this.serviceLayer.getAllVendors();
