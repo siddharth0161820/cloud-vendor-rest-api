@@ -49,6 +49,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login", "/auth/register").permitAll()
+                        .requestMatchers("/vendor/**").permitAll() //  Allow vendor endpoints
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
