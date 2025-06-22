@@ -17,32 +17,53 @@ This is a fully functional Java backend project built using Spring Boot and laye
 ## 🌍 Live Deployment
 
 - 🔗 **Base URL**:  
-  https://cloud-vendor-rest-api-production.up.railway.app
+  [https://cloud-vendor-rest-api-production.up.railway.app](https://cloud-vendor-rest-api-production.up.railway.app)
 
-- ✅ **Public Endpoint** (Get all vendors):  
-  https://cloud-vendor-rest-api-production.up.railway.app/vendor
+- ✅ **Public Endpoint** – Get All Vendors:  
+  [https://cloud-vendor-rest-api-production.up.railway.app/vendor](https://cloud-vendor-rest-api-production.up.railway.app/vendor)
 
-- ✅ **Welcome Route** (`/`):  
-  https://cloud-vendor-rest-api-production.up.railway.app/
+- ✅ **Welcome Route**:  
+  [https://cloud-vendor-rest-api-production.up.railway.app/](https://cloud-vendor-rest-api-production.up.railway.app/)
 
 ---
 
-## 📮 REST API Endpoints (with Responses)
+## 📮 REST API Endpoints
 
-### ➕ POST – Add Vendor
+### ✅ Publicly Accessible Endpoints (No Token Needed)
 
-**Endpoint:**  
-`POST /vendor/addVendors`
+| Method | Endpoint                         | Description            | Test Link |
+|--------|----------------------------------|------------------------|-----------|
+| GET    | `/vendor`                        | Get all vendors        | [Try Now](https://cloud-vendor-rest-api-production.up.railway.app/vendor) |
+| GET    | `/vendor/getSingleVendors/1`     | Get vendor by ID = 1   | [Try Now](https://cloud-vendor-rest-api-production.up.railway.app/vendor/getSingleVendors/1) |
 
-**Request Body:**
+### 🔐 Secured Endpoints (JWT Required)
 
+| Method | Endpoint                          | Description             |
+|--------|-----------------------------------|-------------------------|
+| POST   | `/auth/register`                  | Register new user       |
+| POST   | `/auth/login`                     | Authenticate & get JWT  |
+| POST   | `/vendor/addVendors`              | Add new vendor          |
+| PUT    | `/vendor/updateVendors`           | Update vendor           |
+| DELETE | `/vendor/deleteVendors/{id}`      | Delete vendor by ID     |
+
+> 💡 Use Postman to test secured routes.  
+> Pass JWT token as:  
+> `Authorization: Bearer <your-token>`
+
+---
+
+## 📦 Sample Request & Response
+
+### ➕ Add Vendor (POST `/vendor/addVendors`)
+
+**Request Body**
 ```json
 {
   "name": "Mein",
   "username": "meinn@gamil.com",
   "password": "meinn"
 }
-Response:
+Response
 
 json
 Copy
@@ -57,7 +78,7 @@ Edit
     "password": "meinn"
   }
 }
-⚠️ POST – DTO Validation Error
+⚠️ DTO Validation Error Example
 json
 Copy
 Edit
@@ -66,7 +87,7 @@ Edit
   "username": "",
   "password": ""
 }
-Response:
+Response
 
 json
 Copy
@@ -75,11 +96,8 @@ Edit
   "password": "Password is mandatory",
   "username": "Username is mandatory"
 }
-🔁 PUT – Update Vendor
-Endpoint:
-PUT /vendor/updateVendors
-
-Request Body:
+🔁 Update Vendor (PUT /vendor/updateVendors)
+Request Body
 
 json
 Copy
@@ -90,7 +108,7 @@ Edit
   "username": "Maa@gmail.com",
   "password": "maaaaaaaa"
 }
-Response:
+Response
 
 json
 Copy
@@ -105,40 +123,8 @@ Edit
     "password": "maaaaaaaa"
   }
 }
-🔍 GET – All Vendors
-Endpoint:
-GET /vendor
-
-Response:
-
-json
-Copy
-Edit
-[
-  {
-    "id": 1,
-    "name": "Maa Kali",
-    "username": "maaKali@gamil.com",
-    "password": "maakali"
-  },
-  {
-    "id": 2,
-    "name": "Shree Radha Rani",
-    "username": "shreeradharani@gamil.com",
-    "password": "shreeradharani"
-  }
-]
-🔎 GET – Single Vendor by ID
-Endpoint:
-GET /vendor/getSingleVendors/{id}
-
-Example:
-
-url
-Copy
-Edit
-/vendor/getSingleVendors/1
-Response:
+🔎 Get Vendor By ID (GET /vendor/getSingleVendors/1)
+Response
 
 json
 Copy
@@ -153,11 +139,8 @@ Edit
     "password": "maakali"
   }
 }
-❌ DELETE – Delete Vendor
-Endpoint:
-DELETE /vendor/deleteVendors/{id}
-
-Success Response:
+❌ Delete Vendor (DELETE /vendor/deleteVendors/1)
+Success Response
 
 json
 Copy
@@ -167,7 +150,7 @@ Edit
   "HttPstatus": "OK",
   "Data": null
 }
-Error Response (Not Found):
+Error Response
 
 json
 Copy
@@ -179,13 +162,11 @@ Edit
 }
 🧪 Unit Testing
 ✅ Service layer tested with JUnit 5 + Mockito
-
 ✅ Mocks for repository layer
-
-✅ Positive + negative test cases (vendor not found, valid vendor addition, etc.)
+✅ Positive + Negative test cases implemented
 
 💡 Tech Stack
-Category	Tech Used
+Category	Technology
 Language	Java 17
 Framework	Spring Boot 3.2.x
 API Design	REST + DTO + Validation
@@ -198,19 +179,10 @@ Tools	Postman, IntelliJ, GitHub
 
 🚀 Highlights
 ✅ DTO + Jakarta validation
-
-✅ JWT-based authentication (Stateless)
-
+✅ JWT-based authentication (stateless)
 ✅ Global exception handling with @ControllerAdvice
-
-✅ Clean Layered Architecture: Controller → Service → Repository
-
+✅ Clean layered architecture: Controller → Service → Repository
 ✅ End-to-end testing with live endpoints
-
 ✅ H2 for cloud compatibility
+✅ Screenshot proof of Railway Deployment available
 
-✅ Screenshot proof of Railway Deployment
-
-yaml
-Copy
-Edit
