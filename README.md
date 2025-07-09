@@ -112,6 +112,6 @@ TestServiceLayer.java
 👨‍💻 Author
 Sidharth Kumar
 📧 siddharth0161820@gmail.com
-🔗 LinkedIn
-🔗 GitHub
+🔗 [LinkedIn](https://www.linkedin.com/in/siddharth0161820)
+
 
