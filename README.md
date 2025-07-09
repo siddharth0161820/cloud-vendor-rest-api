@@ -109,9 +109,19 @@ TestServiceLayer.java
 <img width="700" src="https://github.com/user-attachments/assets/ea7534e5-c694-4c7f-b20a-35e81d70d5a8" />
 ✅ Add Another Vendor
 <img width="700" src="https://github.com/user-attachments/assets/0ec3f6fc-3d22-44c7-bcfd-c11f43c4f898" />
-👨‍💻 Author
+## 👨‍💻 Author
+
 Sidharth Kumar
-📧 siddharth0161820@gmail.com
-🔗 [LinkedIn](https://www.linkedin.com/in/siddharth0161820)
+📧 siddharth0161820@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/siddharth0161820)  
+🔗 [GitHub](https://github.com/siddharth0161820)
+
+
+
+🙏 Thank you for taking the time to explore this project.  
+I truly appreciate your interest and look forward to connecting.  
+Feel free to reach out for collaboration, questions, or opportunities!
+
+
 
 
