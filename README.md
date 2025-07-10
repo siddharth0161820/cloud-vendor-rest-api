@@ -25,16 +25,17 @@ A full-stack-ready backend project to demonstrate real-world Spring Boot REST AP
 
 ## 📁 Project Structure
 
-RESTAPI/
-├── controller/
-├── service/
-├── repository/
-├── dto/
-├── exception/
-├── entity/
-├── test/
-│ └── TestServiceLayer.java
-└── application.properties
+| Layer | Link |
+|-------|------|
+| 🧾 Controller | [ControllerLayer.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/ControllerLayer/ControllerLayer.java) |
+| 🧠 Service | [ServiceLayer](https://github.com/siddharth0161820/cloud-vendor-rest-api/tree/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/ServiceLayer) |
+| 💾 Repository | [RepositoryLayer.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/RepositoryLayer/RepositoryLayer.java) |
+| 🧱 Entity | [CloudVendor.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/Entity/CloudVendor.java) |
+| 📦 DTO | [UserDTO.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/UserDTO/UserDTO.java) |
+| ⚠️ Custom Exception | [TestCustomExceptionHandler.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/CustomExceptionHandler/TestCustomExceptionHandler.java) |
+| 🚨 Global Exception | [GlobalExceptionHandling](https://github.com/siddharth0161820/cloud-vendor-rest-api/tree/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/GlobalExceptionHandling) |
+| 🧪 Unit Test | [TestServiceLayer.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/test/java/com/SPRINGBOOT/RESTAPI/ServiceLayer/TestServiceLayer.java) |
+| ▶️ Main App | [RestapiApplication.java](https://github.com/siddharth0161820/cloud-vendor-rest-api/blob/master/RESTAPI/src/main/java/com/SPRINGBOOT/RESTAPI/RestapiApplication.java) |
 
 ---
 
@@ -52,71 +53,123 @@ RESTAPI/
 
 ## 📮 API Endpoints
 
-| Method | Endpoint           | Description        |
-|--------|--------------------|--------------------|
-| GET    | `/vendors`         | Get all vendors    |
-| GET    | `/vendors/{id}`    | Get vendor by ID   |
-| POST   | `/vendors`         | Add new vendor     |
-| PUT    | `/vendors/{id}`    | Update vendor      |
-| DELETE | `/vendors/{id}`    | Delete vendor      |
+### ➕ POST `/addVendors`  
+**Add a new cloud vendor**
 
----
+📤 Request:
+```json
+{
+  "name": "Ganesh Ji",
+  "userName": "ganeshji@gmail.com",
+  "passWord": "ganeshji"
+}
+✅ Success Response:
+{
+  "Message": "Vendor details added",
+  "HttpStatus": "CREATED",
+  "Object": {
+    "id": 1,
+    "name": "Ganesh Ji",
+    "userName": "ganeshji@gmail.com",
+    "passWord": "ganeshji"
+  }
+}
+❌ Validation Error:
+{
+  "passWord": "The passWord is mandatory",
+  "name": "Name should have at-least 2 characters",
+  "userName": "must be a well-formed email address"
+}
+📥 GET /getAllVendors
+Fetch all vendors
+✅ Response:
+[
+  {
+    "id": 1,
+    "name": "Ganesh Ji",
+    "userName": "ganeshji@gmail.com",
+    "passWord": "ganeshji"
+  },
+  {
+    "id": 52,
+    "name": "Jai Maa Kali",
+    "userName": "jaimaakali@gmail.com",
+    "passWord": "jaimaakali"
+  }
+]
+📄 GET /getSingleVendors/{id}
+Fetch a vendor by ID
+✅ Success (/getSingleVendors/1):
+{
+  "Message": "Single Vendor Details Extracted",
+  "HttpStatus": "OK",
+  "Object": {
+    "id": 1,
+    "name": "Ganesh Ji",
+    "userName": "ganeshji@gmail.com",
+    "passWord": "ganeshji"
+  }
+}
+❌ Not Found (/getSingleVendors/11):
+{
+  "message": "Please,Enter the Valid input to extract the respective vendor details",
+  "httpStatus": "NOT_FOUND"
+}
+🗑 DELETE /deleteVendors/{id}
+Delete a vendor
+✅ Success:
+{
+  "Message": "Single Vendor Details deleted",
+  "HttpStatus": "OK",
+  "Object": null
+}
+❌ Error:
+{
+  "message": "Please,Enter the Valid input to delete the respective vendor details",
+  "httpStatus": "NOT_FOUND"
+}
+🔁 PUT /updateVendors
+Update vendor details
+📤 Request:
+{
+  "id": 1,
+  "name": "Om Ganeshya Namah Ji",
+  "userName": "omganeshyanamahji@gmail.com",
+  "passWord": "omganeshyanamahji"
+}
+✅ Response:
+{
+  "Message": "Vendor details updated",
+  "HttpStatus": "OK",
+  "Object": {
+    "id": 1,
+    "name": "Om Ganeshya Namah Ji",
+    "userName": "omganeshyanamahji@gmail.com",
+    "passWord": "omganeshyanamahji"
+  }
+}
 
-## 🛠️ How to Run
+🧪 Unit Testing
+Frameworks: JUnit 5 + Mockito
 
-### Prerequisites
-- Java 17+ (preferably Java 21)  
-- MySQL server running on port 3306  
-- Maven installed  
+Class: TestServiceLayer.java
 
----
+Scenarios:
 
-### 🔧 Update `application.properties`
+Valid CRUD logic
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/CloudVendor
-spring.datasource.username=your_mysql_username
-spring.datasource.password=your_mysql_password
-spring.jpa.hibernate.ddl-auto=update
-Hibernate auto-generates schema from entity classes.
-Alternatively, create CloudVendor DB manually via MySQL.
+Invalid ID → NotFoundException
 
-#▶️ Run the App
-./mvnw spring-boot:run
-📮 Sample API Calls (Using curl)
+Invalid input → Validation exception
 
-curl -X GET http://localhost:8080/vendors
-
-curl -X POST http://localhost:8080/vendors \
-  -H "Content-Type: application/json" \
-  -d '{"vendorName": "AWS", "vendorAddress": "USA", "vendorCode": "CLOUD123"}'
-#🧪 Unit Testing
-Unit tests are written using JUnit 5 and Mockito.
-
-✅ Test Class: TestServiceLayer.java
-
-✔️ Covered Scenarios:
-Valid CRUD operations
-
-Invalid vendor ID → throws NotFoundException
-
-Invalid input → triggers MethodArgumentNotValidException
-
-🔄 Mocking Overview:
-Service layer test uses @Mock to simulate CloudVendorRepository
-
-Validates service logic independently from DB
-
-#🧪 Run Tests
-./mvnw test
-📸 API Test Screenshots (via Postman)
-✅ Add Vendor (POST)
+📸 Postman API Screenshots
+✅ Add Vendor
 <img width="700" src="https://github.com/user-attachments/assets/61e138f6-886f-4822-b8d2-5f47e7f72756" />
 
-❌ Validation Error (POST)
+❌ Validation Error
 <img width="700" src="https://github.com/user-attachments/assets/30a6ab79-8ddb-4bc8-85ee-31f0dab74cfd" />
 
-✅ Get All Vendors (GET)
+✅ Get All Vendors
 <img width="700" src="https://github.com/user-attachments/assets/b2a32d3e-a26b-45c7-b8aa-5ae62f776fbb" />
 
 🗑️ Delete Vendor
@@ -131,12 +184,13 @@ Validates service logic independently from DB
 ✅ Add Another Vendor
 <img width="700" src="https://github.com/user-attachments/assets/0ec3f6fc-3d22-44c7-bcfd-c11f43c4f898" />
 
-👨‍💻 Author
-Sidharth Kumar
+## 👨‍💻 Author
+
+Sidharth Kumar 
 📧 [siddharth0161820@gmail.com](mailto:siddharth0161820@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/siddharthkumar16)  
 🔗 [GitHub](https://github.com/siddharth0161820)
 
-🙏 Thank you for taking the time to explore this project.
-I truly appreciate your interest and look forward to connecting.
-Feel free to reach out for collaboration, questions, or opportunities!
+
+🙏 Thank you for visiting this project.
+Feel free to connect for collaboration, job opportunities, or tech discussions.
