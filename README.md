@@ -187,10 +187,9 @@ Invalid input → Validation exception
 ## 👨‍💻 Author
 
 **Sidharth Kumar**  
-📧 [siddharth0161820@gmail.com](mailto:siddharth0161820@gmail.com)  
-🔗 [LinkedIn](https://www.linkedin.com/in/siddharthkumar16)  
-🔗 [GitHub](https://github.com/siddharth0161820)
-
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/siddharthkumar16/)  
+[![Email](https://img.shields.io/badge/Email-grey?style=for-the-badge&logo=gmail)](mailto:siddharth0161820@gmail.com)  
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/siddharth0161820)
 
 
 🙏 Thank you for visiting this project.
