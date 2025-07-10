@@ -186,10 +186,11 @@ Invalid input → Validation exception
 
 ## 👨‍💻 Author
 
-**Sidharth Kumar**  
-📧 <a href="mailto:siddharth0161820@gmail.com">siddharth0161820@gmail.com</a> •  
-🔗 <a href="https://www.linkedin.com/in/siddharthkumar16" target="_blank">LinkedIn</a> •  
-🔗 <a href="https://github.com/siddharth0161820" target="_blank">GitHub</a>
+**Sidharth Kumar**
+
+[![Email](https://img.shields.io/badge/Email-siddharth0161820@gmail.com-red?style=for-the-badge&logo=gmail)](mailto:siddharth0161820@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/siddharthkumar16)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/siddharth0161820)
 
 
 
