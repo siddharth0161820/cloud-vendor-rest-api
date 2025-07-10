@@ -184,9 +184,7 @@ Invalid input → Validation exception
 ✅ Add Another Vendor
 <img width="700" src="https://github.com/user-attachments/assets/0ec3f6fc-3d22-44c7-bcfd-c11f43c4f898" />
 
-## 👨‍💻 Author
-
-**Sidharth Kumar**
+```
 
 ## 👨‍💻 Author
 
