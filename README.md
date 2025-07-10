@@ -188,15 +188,14 @@ Invalid input → Validation exception
 
 **Sidharth Kumar**
 
-<a href="mailto:siddharth0161820@gmail.com">
-  <img src="https://img.shields.io/badge/Email-siddharth0161820@gmail.com-red?style=for-the-badge&logo=gmail" />
-</a>
-<a href="https://www.linkedin.com/in/siddharthkumar16" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
-</a>
-<a href="https://github.com/siddharth0161820" target="_blank">
-  <img src="https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github" />
-</a>
+## 👨‍💻 Author
+
+**Sidharth Kumar**
+
+[![Email](https://img.shields.io/badge/Email-siddharth0161820@gmail.com-red?style=for-the-badge&logo=gmail)](mailto:siddharth0161820@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/siddharthkumar16)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/siddharth0161820)
+
 
 
 
