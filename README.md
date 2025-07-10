@@ -186,10 +186,11 @@ Invalid input → Validation exception
 
 ## 👨‍💻 Author
 
-Sidharth Kumar 
+**Sidharth Kumar**  
 📧 [siddharth0161820@gmail.com](mailto:siddharth0161820@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/siddharthkumar16)  
 🔗 [GitHub](https://github.com/siddharth0161820)
+
 
 
 🙏 Thank you for visiting this project.
