@@ -196,10 +196,5 @@ Invalid input → Validation exception
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/siddharthkumar16)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/siddharth0161820)
 
-
-
-
-
-
 🙏 Thank you for visiting this project.
 Feel free to connect for collaboration, job opportunities, or tech discussions.
