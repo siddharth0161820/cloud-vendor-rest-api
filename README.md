@@ -1,6 +1,7 @@
-# ☁️ Cloud Vendor REST API
+# ☁️  Cloud Service Provider Management REST API
 
-A full-stack-ready backend project to demonstrate real-world Spring Boot REST API development using DTOs, global exception handling, unit testing, and clean layered architecture.
+
+A full-stack-ready backend project demonstrating real-world Spring Boot REST API development using clean layered architecture (Controller → Service → Repository), DTOs, global exception handling, validation, and unit testing with JUnit and Mockito.
 
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=for-the-badge)
